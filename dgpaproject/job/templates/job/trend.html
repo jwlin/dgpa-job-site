@@ -1,0 +1,49 @@
+{% extends "job/layout.html" %}
+
+{% load static %}
+
+{% block head-styles %}
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+{% endblock %}
+
+
+{% block navbar %}
+<li><a href="{% url 'job:trend' %}">{{title}}</a></li>
+{% endblock %}
+
+{% block navbar-right %}
+    <li><a>資料日期：{{start_date | default:"2015/04/17"}} - {{to_date}}</a></li>
+{% endblock%}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6" id="admin_div">
+  	<h4 style="text-align: center; font-weight: bold;">行政類</h4>
+	<table id="adminTable" class="display compact" width="100%"></table>
+  </div>
+  <div class="col-md-6" id="tech_div">
+  	<h4 style="text-align: center; font-weight: bold;">技術類</h4>
+	<table id="techTable" class="display compact" width="100%"></table>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12" id="detail_div">
+  	<h4 style="text-align: center; font-weight: bold;"><span id="detail_title">開缺機關列表</span></h4>
+	<table id="detailTable" class="display compact" width="100%"></table>
+  </div>
+</div>
+
+{% endblock%}
+
+{% block scripts %}
+	<script type="text/javascript" charset="utf8">
+	var dataSet = {{admin_list|safe}}
+	var dataSet2 = {{tech_list|safe}}
+	</script>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="{% static 'job/scripts/spin.min.js' %}"></script>
+	<script type="text/javascript" charset="utf8" src="{% static 'job/scripts/trend.js' %}"></script>
+{% endblock %}
+
