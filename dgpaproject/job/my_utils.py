@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 import datetime
 import ssl
 import os
+import sys
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from django.conf import settings
@@ -226,5 +227,9 @@ def isResumeRequired(url):
 
 
 if __name__ == '__main__':
-    os.environ["DJANGO_SETTINGS_MODULE"] = "opencpa.settings.local"
-    get_jobs_from_xml(os.path.join(settings.BASE_DIR, "job.230827.xml"), is_path_local=True)
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.append(BASE_DIR)
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'dgpaproject.settings'
+    jobs = get_jobs_from_xml(os.path.join(settings.BASE_DIR, "../data/job.230827.xml"), is_path_local=True)
+    print(jobs[0])
+    print(len(jobs))
