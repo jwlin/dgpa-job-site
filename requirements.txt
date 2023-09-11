@@ -11,3 +11,4 @@ typing_extensions==4.7.1
 tzdata==2023.3
 mysqlclient==2.1.1
 whitenoise==6.5.0
+python-dotenv==1.0.0
