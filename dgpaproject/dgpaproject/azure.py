@@ -1,3 +1,4 @@
+from .settings import * 
 import os
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
@@ -23,4 +24,4 @@ STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")
 
 STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
 
-DEBUG = False
+DEBUG = True
