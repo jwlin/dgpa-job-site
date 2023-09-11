@@ -62,7 +62,7 @@ def get_jobs_from_xml(xml_path, is_path_local=False):
             for idx, w_id in enumerate(work_places_ids):
                 if w_id in [88, 89]:
                     work_places_ids[idx] += 80
-                elif w_id == 21:
+                elif w_id == 98:
                     work_places_ids[idx] = 101
                 elif w_id == 20:
                     work_places_ids[idx] = 24
@@ -230,6 +230,6 @@ if __name__ == '__main__':
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     sys.path.append(BASE_DIR)
     os.environ['DJANGO_SETTINGS_MODULE'] = 'dgpaproject.settings'
-    jobs = get_jobs_from_xml(os.path.join(settings.BASE_DIR, "../data/job.230827.xml"), is_path_local=True)
+    jobs = get_jobs_from_xml(os.path.join(settings.BASE_DIR, "data/job.230827.xml"), is_path_local=True)
     print(jobs[0])
     print(len(jobs))

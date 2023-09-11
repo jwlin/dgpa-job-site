@@ -24,7 +24,7 @@ ur = UpdateRecord.objects.all()[0]
 
 if (twDate != ur.last_update_day) or (not CurrentJob.objects.all()): # data is old or last update failed
     # jobs = my_utils.get_jobs_from_xml(xml_url)
-    jobs = my_utils.get_jobs_from_xml(os.path.join(settings.BASE_DIR, "../data/job.230827.xml"), is_path_local=True)
+    jobs = my_utils.get_jobs_from_xml(os.path.join(settings.BASE_DIR, "data/job.230827.xml"), is_path_local=True)
     CurrentJob.objects.all().delete()
     JobTrend.objects.filter(date=yesterday).delete()
     for job in jobs:
