@@ -28,6 +28,8 @@ SECRET_KEY = 'django-insecure-y^x&sft6w+0qaa3h&u1ulfwf1wm4kn!hn@23h&uc94ta29d=0i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ADMIN_ENABLED = True
+
 ALLOWED_HOSTS = []
 
 
@@ -127,5 +129,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if 'WEBSITE_HOSTNAME' in os.environ: # Running on Azure
     from .azure import *
-
-ADMIN_ENABLED = True
