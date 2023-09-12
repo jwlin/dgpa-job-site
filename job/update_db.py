@@ -33,6 +33,9 @@ if (twDate != ur.last_update_day) or (not CurrentJob.objects.all()): # data is o
         if not my_utils.filter(sysname):
             continue
 
+        if job['work_addr'] and len(job['work_addr']) > 200:
+            continue
+
         c_job = CurrentJob()
         c_job.title = job['title']
         c_job.sysnam = sysname
@@ -43,6 +46,7 @@ if (twDate != ur.last_update_day) or (not CurrentJob.objects.all()): # data is o
         c_job.work_quality = job['work_quality'] if job['work_quality'] else 'no data'
         c_job.work_item = job['work_item']
         c_job.work_addr = job['work_addr'] if job['work_addr'] else 'no data'
+
         
         # get the unique job_id of this job
         c_job.job, created = Job.objects.get_or_create(

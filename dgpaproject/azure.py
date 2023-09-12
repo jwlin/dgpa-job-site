@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),  # localhost'; or an IP Address that your DB is hosted on
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT')
     }
 }
@@ -24,4 +24,4 @@ STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")
 
 STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
 
-DEBUG = True
+DEBUG = True if os.environ.get('DEBUG') == "True" else False
