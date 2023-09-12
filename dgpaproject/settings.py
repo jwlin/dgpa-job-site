@@ -127,3 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if 'WEBSITE_HOSTNAME' in os.environ: # Running on Azure
     from .azure import *
+
+ADMIN_ENABLED = True

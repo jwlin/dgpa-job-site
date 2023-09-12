@@ -25,3 +25,5 @@ STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")
 STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
 
 DEBUG = True if os.environ.get('DEBUG') == "True" else False
+
+ADMIN_ENABLED = True if os.environ.get('ADMIN_ENABLED') == "True" else False
