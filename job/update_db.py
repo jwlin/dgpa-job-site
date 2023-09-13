@@ -33,7 +33,7 @@ if (twDate != ur.last_update_day) or (not CurrentJob.objects.all()): # data is o
         if not my_utils.filter(sysname):
             continue
 
-        if job['work_addr'] and len(job['work_addr']) > 200:
+        if job['work_addr'] and len(job['work_addr']) > 2000:
             continue
 
         c_job = CurrentJob()

@@ -3,15 +3,15 @@ from django.core.validators import validate_comma_separated_integer_list
 
 
 class Job(models.Model):
-    title = models.CharField(max_length=200)
-    sysnam = models.CharField(max_length=200)
-    org_name = models.CharField(max_length=200)
-    person_kind = models.CharField(max_length=50)
-    rank_from = models.PositiveSmallIntegerField()
-    rank_to = models.PositiveSmallIntegerField()
-    work_quality = models.CharField(max_length=3000)
-    work_item = models.CharField(max_length=1000, null=True)
-    work_addr = models.CharField(max_length=200, null=True)
+    title = models.CharField(max_length=300)
+    sysnam = models.CharField(max_length=300)
+    org_name = models.CharField(max_length=300)
+    person_kind = models.CharField(max_length=100)
+    rank_from = models.PositiveIntegerField()
+    rank_to = models.PositiveIntegerField()
+    work_quality = models.CharField(max_length=4000)
+    work_item = models.CharField(max_length=2000, null=True)
+    work_addr = models.CharField(max_length=2000, null=True)
     is_resume_required = models.BooleanField(default=False)
 
     def __str__(self):
