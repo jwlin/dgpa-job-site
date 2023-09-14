@@ -1,0 +1,559 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=9" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta property="og:title" content="行政院人事行政總處-事求人" /><meta property="og:description" content="機關徵才項目明細" /><meta property="og:type" content="website" /><title>
+	行政院人事行政總處-事求人-機關徵才項目明細
+</title>
+
+    <link href="/want03front/css/CustomControls.css" rel="stylesheet" type="text/css" />
+
+    
+    <script type="text/javascript" src="/want03front/js/NEW/jquery-1.12.2.js"></script>
+    <script type="text/javascript" src="/want03front/js/NEW/jquery-ui-1.12.js"></script>
+    <script type="text/javascript" src="/want03front/js/NEW/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/want03front/js/NEW/datepicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="/want03front/js/NEW/datepicker/bootstrap-datepicker.zh-TW.min.js"></script>
+    <script type="text/javascript" src="/want03front/js/NEW/JS_custom.js"></script>
+    <script type="text/javascript" src="/want03front/js/NEW/JS_top.js"></script>
+    
+    <link href="/want03front/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/want03front/Content/CSS/custom_style_new.css" rel="stylesheet" type="text/css" />
+    <link href="/want03front/Content/CSS/custom_style_rwd_new.css" rel="stylesheet" type="text/css" />
+    <link href="/want03front/Content/CSS/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="/want03front/js/NEW/Html5.js"></script>
+      <script type="text/javascript" src="/want03front/js/NEW/Respond.min.js"></script>
+    <![endif]-->
+    <link rel="Stylesheet" href="/want03front/js/jquery-ui.css" type="text/css" />
+
+    <style type="text/css">
+        .job_detail_item_top_title {
+            font-size: 20px;
+            color: #3f737b;
+            float: left;
+            margin: 0px 0px 0px 6px;
+            font-weight: bold;
+        }
+
+        .job_detail_item_title {
+            font-size: 18px;
+            color: #4a8c3d;
+            float: left;
+        }
+
+        .job_detail_item_content {
+            font-size: 18px;
+            color: black;
+            word-wrap: break-word;
+        }
+
+        .job_detail_item_title_circule {
+            height: 20px;
+            width: 20px;
+            background-color: #77933c;
+            border-radius: 50%;
+            display: inline-block;
+            color: #ffffff;
+            margin: 2px 8px 0px 5px;
+            float: left;
+            /*padding: 0px 0px 10px 0px;*/
+        }
+
+        .job_detail_item_title_arrow {
+            padding: 0px 5px 0px 5px;
+            width: 20px;
+            height: 20px;
+            margin: -1px 0px 0px 0px;
+        }
+
+        .job_detail_item_title_square {
+            height: 20px;
+            width: 20px;
+            background-color: #3f737b;
+            display: inline-block;
+            color: #ffffff;
+            margin: 2px 8px 0px 5px;
+            float: left;
+        }
+
+        .job_detail_item_paragraph {
+            padding: 0px 0px 0px 30px;
+        }
+
+        .job_detail_top_btn_div {
+            border-bottom: 2px dashed #bad3e6;
+            padding: 3px 0px 8px 0px;
+            margin: 0px 0px 5px 0px;
+        }
+
+        .Confirm_Application {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f9eded;
+            background: #ad380b;
+            border: none;
+            width: 340px;
+            height: 30px;
+        }
+
+        /*@media (max-width: 576px) {
+            .save_button{
+                display: none;
+            }
+        }*/
+
+        @media (max-width: 396px) {
+            /*.save_button {
+                display: none;
+            }*/
+
+            .job_detail_item_title {
+                font-size: 16px;
+            }
+
+            .job_detail_item_content {
+                font-size: 16px;
+            }
+
+            .job_detail_item_content_div {
+                padding-left: 102px;
+                text-indent: 0px;
+            }
+
+            .job_detail_item_title_circule {
+                height: 18px;
+                width: 18px;
+            }
+
+            .job_detail_item_title_arrow {
+                margin: -2px 0px 0px -1px;
+            }
+        }
+    </style>
+
+    <script>
+        $(function () {
+            self.moveTo(0, 0)
+            self.resizeTo(screen.availWidth, screen.availHeight)
+
+            $("#StepDesc").dialog({
+                autoOpen: false,
+                minWidth: 350,
+                maxWidth: 630,
+                modal: true,
+                open: function (event, ui) {
+                    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+                },
+                buttons: {
+                    "確定": function () {
+                        $(this).dialog("close");
+                        if (parent && parent.opener) {
+                            window.parent.opener.GO_ECPA();
+                            window.close();
+                        }
+                        else {
+                            window.location.href = 'https://ecpa.dgpa.gov.tw/uIAM/clogin.asp?returnUrl=https://web3.dgpa.gov.tw/want03resume/sso_verify.aspx'
+                        }
+                    },
+                    "取消": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+
+        function facebook_share() {
+            window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent('' + location.href + '')));
+        }
+
+        function GO_Resume_N() {
+            window.parent.opener.GO_Resume_N();
+            window.close();
+            //window.location.href = 'http://localhost/WANT03RESUME_N/WANTLogin.aspx';
+        }
+    </script>
+</head>
+
+<body oncontextmenu="window.event.returnValue=false">
+    <form name="form1" method="post" action="./wantf00001_1.aspx?work_id=1120804409" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/want03front/js/check.js" type="text/javascript"></script>
+<script src="/want03front/ScriptResource.axd?d=z0DTbBtn-rnL6mkfqyivpciDCysNTtp0RUFiHlE9cb1cQh9vCsGNJfwXuyBE-tmnJlWtBVzFBnBqglik9g5hKDOR4LsDgsbA19oLX3xGCOHn876qF4uGcOSLu8a3WViAKlpotL8yEgobJNAnT9PlFyq2yUA1&amp;t=96346c8" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax 用戶端架構無法載入。');
+//]]>
+</script>
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="3B07B3AC" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+        
+        <div id="wrapper">
+            <div class="gray-bg">
+                <!-- #region 職缺資料明細列表 -->
+                <div class="wrapper wrapper-content-left-top animated fadeInRight" style="margin: 10px 0px 0px 0px;">
+                    <input type="hidden" name="V_PK" id="V_PK" value="1120804409" />
+                    <input type="hidden" name="lblTempFileID" id="lblTempFileID" />
+
+                    <div class="row">
+                        <div class="JOB_DETAIL_Page_Title">
+                            <i style="float: left;">
+                                <img alt="職缺資料明細ICON" src="../Content/IMAGE/Title_1.png" height="26" width="28" style="margin: -3px 0px 0px 0px;" />
+                            </i>
+                            <div style="margin: 0px 0px 0px 35px;">行政院人事行政總處-事求人-機關徵才項目明細</div>
+                        </div>
+                    </div>
+
+                    <div id="JOB_DETAIL_CONTENT">
+	
+                        <div class="content">
+                            <div class="row content-custom_job_details">
+                                <!--另存新檔跟友善列印的按鈕-->
+                                <div class="content_top_btn move-rigtht job_detail_top_btn_div  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div style="float: right; margin: -3px 0px 0px 15px;">
+                                            <label style="font-size: 16px; margin: 5px 5px 0px 0px;">分享至</label>
+                                            <input type="button" class="facebook_share" title="分享至FaceBook" onclick="facebook_share()" />
+                                        </div>
+                                        <input type="submit" name="BtnDownload" value="另存新檔" id="BtnDownload" class="save_button" />
+                                        <input id="windows_print" class="print_button" type="button" value="友善列印" onclick="window.print();" />
+                                    </div>
+                                </div>
+
+                                <!--職稱-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    
+                                    <span id="PLTITLE" class="job_detail_item_top_title"><span>高級分析師</span></span>
+                                </div>
+
+                                <!--徵才機關-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        徵才機關：
+                                    </label>
+                                    <span id="PLORG_NAME" class="job_detail_item_content"><span>數位發展部</span></span>
+                                </div>
+
+                                <!--人員區分-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        人員區分：
+                                    </label>
+                                    <span id="PLPERSON_KIND" class="job_detail_item_content"><span>一般人員</span></span>
+                                </div>
+
+                                <!--官職等-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        官職等：
+                                    </label>
+                                    <span id="PLRANK" class="job_detail_item_content"><span>簡任第十職等至第十一職等</span></span>
+                                </div>
+
+                                <!--職系-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        職系：
+                                    </label>
+                                    <span id="PLSYSNAM" class="job_detail_item_content"><span>資訊處理</span></span>
+                                </div>
+
+                                <!--名額-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        名額：
+                                    </label>
+                                    <span id="PLNUMBER_OF" class="job_detail_item_content"><span>1</span></span>
+                                </div>
+
+                                <!--性別-->
+                                <!--mod by 詩雯 20220627 因客戶需求，依照職缺的性別設定呈現，若為不拘則不帶出性別欄位，若為男、女則帶出性別欄位-->
+                                
+
+                                <!--工作地點-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        工作地點：
+                                    </label>
+                                    <span id="PLWORK_PLACE_TYPE" class="job_detail_item_content"><span>10-臺北市</span></span>
+                                </div>
+
+                                <!--有效期間-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        有效期間：
+                                    </label>
+                                    <span id="PLDATE_FROM_TO" class="job_detail_item_content"><span>112/08/25~112/09/14</span></span>
+                                </div>
+
+                                <!--資格條件-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        資格條件：
+                                    </label>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <span id="PLWORK_QUALITY" class="job_detail_item_content">1.	國內外大專以上學校畢業。<br/>2.	具擬任簡任第10職等資格，並具資訊處理職系任用資格。<br/>3.	具備累計4年主管職務或簡任非主管職務經歷。<br/>4.	近3年考績均列甲等。<br/>5.	具備良好溝通能力、資訊專業、政策規劃、分析與研究、行政溝通協調、領導能力與領導大型政府專案經驗。<br/>6.	無公務人員任用法第26條迴避任用、第28條及公務人員陞遷法第12條之限制，以及特考特用限制調任之情事者。</span>
+                                    </div>
+                                </div>
+
+                                <!--工作項目-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        工作項目：
+                                    </label>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <span id="PLWORK_ITEM" class="job_detail_item_content">1.	政府數位服務政策、法規與計畫之整體規劃、訂定、推動及審議。<br/>2.	政府數位服務再造及共通性資訊應用服務之規劃、推動及輔導。<br/>3.	政府數位服務公私協力、創新實證機制、跨域合作之規劃及推動。<br/>4.	政府數位基礎建設與其運作韌性之規劃、協調及管理。<br/>5.	政府數位人才培力與運用策略之規劃及推動。<br/>6.	其他交辦事項。</span>
+                                    </div>
+                                </div>
+
+                                <!--工作地址-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        工作地址：
+                                    </label>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <span id="PLWORK_ADDRESS" class="job_detail_item_content"><span>1.	數位發展部數位政府司(臺北市中正區忠孝西路1段66號)
+2.	依本部遠距辦公試辦方案規定，員工因業務推動需要、有重大特殊照護需求等情形，經單位主管審認於適當場所（含其住所）處理公務亦具效益者，得申請遠距辦公。另員工亦得考量自行申請於臺南沙崙辦公室異地辦公（試辦期間112年7月至12月）。</span></span>
+                                        <br />
+                                        <a id="lnkMap" onClick="window.open(&#39;../common/E_MAP.aspx?ADDR=1.%09%e6%95%b8%e4%bd%8d%e7%99%bc%e5%b1%95%e9%83%a8%e6%95%b8%e4%bd%8d%e6%94%bf%e5%ba%9c%e5%8f%b8(%e8%87%ba%e5%8c%97%e5%b8%82%e4%b8%ad%e6%ad%a3%e5%8d%80%e5%bf%a0%e5%ad%9d%e8%a5%bf%e8%b7%af1%e6%ae%b566%e8%99%9f)%0d%0a2.%09%e4%be%9d%e6%9c%ac%e9%83%a8%e9%81%a0%e8%b7%9d%e8%be%a6%e5%85%ac%e8%a9%a6%e8%be%a6%e6%96%b9%e6%a1%88%e8%a6%8f%e5%ae%9a%ef%bc%8c%e5%93%a1%e5%b7%a5%e5%9b%a0%e6%a5%ad%e5%8b%99%e6%8e%a8%e5%8b%95%e9%9c%80%e8%a6%81%e3%80%81%e6%9c%89%e9%87%8d%e5%a4%a7%e7%89%b9%e6%ae%8a%e7%85%a7%e8%ad%b7%e9%9c%80%e6%b1%82%e7%ad%89%e6%83%85%e5%bd%a2%ef%bc%8c%e7%b6%93%e5%96%ae%e4%bd%8d%e4%b8%bb%e7%ae%a1%e5%af%a9%e8%aa%8d%e6%96%bc%e9%81%a9%e7%95%b6%e5%a0%b4%e6%89%80%ef%bc%88%e5%90%ab%e5%85%b6%e4%bd%8f%e6%89%80%ef%bc%89%e8%99%95%e7%90%86%e5%85%ac%e5%8b%99%e4%ba%a6%e5%85%b7%e6%95%88%e7%9b%8a%e8%80%85%ef%bc%8c%e5%be%97%e7%94%b3%e8%ab%8b%e9%81%a0%e8%b7%9d%e8%be%a6%e5%85%ac%e3%80%82%e5%8f%a6%e5%93%a1%e5%b7%a5%e4%ba%a6%e5%be%97%e8%80%83%e9%87%8f%e8%87%aa%e8%a1%8c%e7%94%b3%e8%ab%8b%e6%96%bc%e8%87%ba%e5%8d%97%e6%b2%99%e5%b4%99%e8%be%a6%e5%85%ac%e5%ae%a4%e7%95%b0%e5%9c%b0%e8%be%a6%e5%85%ac%ef%bc%88%e8%a9%a6%e8%be%a6%e6%9c%9f%e9%96%93112%e5%b9%b47%e6%9c%88%e8%87%b312%e6%9c%88%ef%bc%89%e3%80%82&#39;,&#39;MAP&#39;,&#39;height=600, width=800,toolbar=no, menubar=no, scrollbars=no,resizable=no,location=no, status=no&#39;)" target="Map" style="cursor: pointer; font-size: 18px;"><u><font color="Blue">電子地圖</font></u></a>
+                                    </div>
+                                </div>
+
+                                <!--聯絡E-Mail-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        聯絡E-Mail：
+                                    </label>
+                                    <span id="PLVITAE_EMAIL" class="job_detail_item_content"><span>jhz0906@moda.gov.tw</span></span>
+                                </div>
+
+                                <!--聯絡方式(含檢具文件)-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        
+                                        聯絡方式：
+                                        
+                                    </label>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <span id="PLCONTACT_METHOD" class="job_detail_item_content">1.	請於112年9月14日前，登入行政院人事行政總處「事求人機關徵才系統」，點選「我要應徵」，檢視並確認「我的簡歷」及「我的履歷」內容無誤後(並請維護簡要自述資料)，點選【應徵職缺】並將(1)現職派令影本。(2)銓敘部銓審函影本。(3)本職缺資格需檢附之相關專長證書佐證文件上傳(請掃描合併為1個電子檔上傳)。未能同意調閱履歷、上傳文件不齊全、未於上開系統報名而以紙本或電子郵件應徵及未於期限前完成者等均視為資格不符，視同未報名。<br/>2.	續備註1，近日多次發生應徵者誤以為已上傳前開資料，導致資格不符，請各位應徵者務必確認依備註1上傳相關資料。<br/>3.	為利廣納各界優秀人才，本次所公告工作項目較廣泛，後續將依面試情況，加以適才調配。<br/>4.	經審查符合資格條件及用人需求者，擇優通知面談；未符資格或需求者，恕不另行通知。<br/>5.	本項甄選得視需要增列候補名額，其名額至多以職缺數2倍為限，候補期間自甄選結果確定之翌日起3個月內。<br/>6.	如有相關疑義請洽以下人員：<br/>(1)報名事宜：詹小姐(聯絡電話：02-23800614)。<br/>(2)工作內容：蔡小姐(聯絡電話：02-23800211)。<br/></span>
+                                    </div>
+                                </div>
+                                <!--Mod by 奇緯 20200630 增加職缺類別 履歷調閱資料兩區塊 -->
+                                <!--職缺類別-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        職缺類別：
+                                    </label>
+                                    <br />
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <span id="V_Work_Type" class="job_detail_item_content">須具公務人員任用資格職缺</span>
+                                        
+                                    </div>
+                                </div>
+
+                                <!--履歷調閱資料-->
+                                <div id="Case_Work_Type" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        履歷調閱資料：
+                                    </label>
+                                    <br />
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <label style="margin-left: 3px;" class="column_content_label">訓練日期區間：</label>
+                                            <span id="V_Training_Date" EnableGlobalization="false"></span>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <label style="margin-left: 3px;" class="column_content_label">獎懲日期區間：</label>
+                                            <span id="V_Rewards_Punishments_Date" EnableGlobalization="false"></span>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <label style="margin-left: 3px;" class="column_content_label">考績年度區間：</label>
+                                            <span id="V_Appraisal_Year" EnableGlobalization="false"></span>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_ALL" type="checkbox" name="V_IS_ALL" checked="checked" disabled="disabled" /></span>
+                                            <label class="column_content_label">個人全部資料</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Exam" type="checkbox" name="V_IS_Exam" disabled="disabled" /></span>
+                                            <label class="column_content_label">考試或晉升訓練/專門職業及技術人員資格</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Appraisal" type="checkbox" name="V_IS_Appraisal" disabled="disabled" /></span>
+                                            <label class="column_content_label">考績(成)或成績考核</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Rewards_Punishments" type="checkbox" name="V_IS_Rewards_Punishments" disabled="disabled" /></span>
+                                            <label class="column_content_label">獎懲</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Language_Skills" type="checkbox" name="V_IS_Language_Skills" disabled="disabled" /></span>
+                                            <label class="column_content_label">專長及語言能力</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Screening" type="checkbox" name="V_IS_Screening" disabled="disabled" /></span>
+                                            <label class="column_content_label">檢覈/甄審</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Military_Service" type="checkbox" name="V_IS_Military_Service" disabled="disabled" /></span>
+                                            <label class="column_content_label">兵役/教師資格/身心障礙註記/原住民註記</label>
+                                        </div>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <span disabled="disabled" style="margin-left: 3px;"><input id="V_IS_Study" type="checkbox" name="V_IS_Study" disabled="disabled" /></span>
+                                            <label class="column_content_label">訓練及進修</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <!--mod by 詩雯 20220526 因需求加入不須具公務人員任用資格履歷產製欄位選擇-->
+                                 
+                                <!--Add by 妤瑄 20211203 增加附件下載-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="job_detail_item_title_circule">
+                                        <div class="job_detail_item_title_arrow">
+                                            &gt;
+                                        </div>
+                                    </div>
+                                    <label class="job_detail_item_title">
+                                        職缺相關附件：
+                                    </label>
+                                    <br />
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 job_detail_item_paragraph">
+                                        <div id="V_File_Upl_Link_Div">
+		
+                                                <a id="V_lbtn_file_download" href="javascript:__doPostBack(&#39;V_lbtn_file_download&#39;,&#39;&#39;)"></a>
+                                            
+	</div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <br />
+                                <!--Mod by 奇緯 20200630 移除文字： * 請注意：本職缺啟用現職應徵人員調閱履歷功能，現職應徵者需同意開放履歷給徵才機關調閱 -->
+                                <span id="txt_UseResume" class="Resume_Class" class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="margin: 0px 15px 0px 0px;"><span>* 請注意：本職缺啟用應徵人員調閱履歷功能，應徵者需同意開放履歷給徵才機關調閱</span></span>
+                                <!--Mod by Mike 20200803 小沈要求移除相關文字-->
+                                <input name="Confirm_Application" type="button" id="Confirm_Application" class="Confirm_Application" value="我要應徵" onclick="$(&#39;#StepDesc&#39;).dialog(&#39;open&#39;);" style="width: 100px;" />
+                                <!--Mod by 詩雯 20220523 加入title屬性，顯示提示文字-->
+                                                                
+                                <!--Mod by 妤瑄 20210622 增加QRcode示意-->
+                                <!--Mod by 昕蓉 20211006 將QRCode的屬性ImageUrl、Width、Height移至後端設定-->
+                                
+                                
+                                <br />
+                                
+                                <a id="V_Remark" class="ResumeDesc_Class" href="../doc/%E5%85%AC%E5%8B%99%E4%BA%BA%E5%93%A1%E6%87%89%E5%BE%B5%E4%BD%9C%E6%A5%AD%E8%AA%AA%E6%98%8E.pdf" target="_blank">公務人員應徵作業說明</a>
+                                
+                            </div>
+                        </div>
+                    
+</div>
+                    <div class="content row" style="font-size: 16px; text-align: center; margin: 0px 10px 0px 10px;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            
+                            <span id="lbl_WANT_REMARK" style="display:inline-block;"><p>所有電子報的內容均由各機關自行審核後公布本網站，若對徵才內容有疑問請逕洽該徵才機關。</p></span>
+                        </div>
+                    </div>
+                    <div>
+                        
+                    </div>
+
+                    <div class="element_center">
+                        <button type="button" class="view_button" onclick="window.close();">回上一頁</button>
+                    </div>
+                    
+                    <div id="StepDesc" style="margin: 0px 0px 0px -18px;" title="職缺應徵步驟如下：">
+                        <ol>
+                            <li>必需持自然人憑證或健保卡，登入職缺應徵畫面</li>
+                            <li>我的簡歷: 確認聯絡電話及聯絡E-mail及填寫目前單位的工作內容</li>
+                            <li>我的履歷:進入我的履歷校對公務人員履歷表資料</li>
+                            <li>應徵職缺:查詢職缺及確定應徵職缺並授權由人事總處取得完整公務人員履歷資料</li>
+                            <li>我的應徵:可檢視個人已應徵的職缺及上傳附件(附件不可含個人履歷表)</li>
+                        </ol>
+                    </div>
+
+                    <br />
+                </div>
+                <!-- #endregion   -->
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

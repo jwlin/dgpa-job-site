@@ -214,13 +214,21 @@ def split_sysnam(sysnam):
         return [sysnam]
 
 
-def isResumeRequired(url):
+def isResumeRequired(url, is_path_local=False):
     if not url:
         return False
-    resp = requests.get(url, verify=False)
-    if resp.status_code != 200:
-        return False
-    if '本職缺啟用現職應徵人員調閱簡歷功能，現職應徵者需同意開放簡歷給徵才機關調閱' in resp.text:
+    
+    if is_path_local:
+        with open(url, "r", encoding="utf-8") as f:
+            resp = f.read()
+    else:
+        resp = requests.get(url, verify=False)
+        if resp.status_code != 200:
+            return False
+        else:
+            resp = resp.text
+    
+    if '<span id="txt_UseResume"' in resp:
         return True
     else:
         return False

@@ -1,4 +1,6 @@
+import os
 from django.test import TestCase
+from django.conf import settings
 from .my_utils import split_sysnam, isResumeRequired, replaceChNum
 
 class MyUtilTest(TestCase):
@@ -32,9 +34,9 @@ class MyUtilTest(TestCase):
             for j in range(len(ss)):
                 self.assertEqual(ans[i][j], ss[j])
     
-    # def test_isResumeRequired(self):
-    #     self.assertFalse(isResumeRequired('http://web3.dgpa.gov.tw/want03front/ap/wantf00001_1.aspx?work_id=1050500240'))
-    #     self.assertTrue(isResumeRequired('http://web3.dgpa.gov.tw/want03front/ap/wantf00001_1.aspx?work_id=1050300230'))
+    def test_isResumeRequired(self):        
+        self.assertTrue(isResumeRequired(os.path.join(settings.BASE_DIR, "data/resume-required.html"), is_path_local=True))
+        self.assertFalse(isResumeRequired(os.path.join(settings.BASE_DIR, "data/resume-not-required.html"), is_path_local=True))
         
 
     def test_replaceChNum(self):
