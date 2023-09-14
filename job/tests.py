@@ -1,7 +1,7 @@
 import os
 from django.test import TestCase
 from django.conf import settings
-from .my_utils import split_sysnam, isResumeRequired, replaceChNum
+from .my_utils import split_sysnam, isResumeRequired, replaceChNum, get_latest_xml_file, get_jobs_from_xml
 
 class MyUtilTest(TestCase):
     def test_split_sysnam(self):
@@ -34,6 +34,7 @@ class MyUtilTest(TestCase):
             for j in range(len(ss)):
                 self.assertEqual(ans[i][j], ss[j])
     
+
     def test_isResumeRequired(self):        
         self.assertTrue(isResumeRequired(os.path.join(settings.BASE_DIR, "data/resume-required.html"), is_path_local=True))
         self.assertFalse(isResumeRequired(os.path.join(settings.BASE_DIR, "data/resume-not-required.html"), is_path_local=True))
@@ -43,3 +44,14 @@ class MyUtilTest(TestCase):
         s = '名額１符合下列各款資格者 １、曾經銓敘審定合格實授委任第3職等以上之公務人員【２、未曾受懲戒或行政處分，品行端'
         oracle = '名額1符合下列各款資格者 1、曾經銓敘審定合格實授委任第3職等以上之公務人員【2、未曾受懲戒或行政處分，品行端'
         self.assertEqual(replaceChNum(s), oracle)
+
+
+    def test_get_latest_xml_file(self):
+        self.assertTrue(get_latest_xml_file(os.path.join(settings.BASE_DIR, "data")).endswith("data/job.230827.xml"))
+
+    
+    def test_get_jobs_from_xml(self):
+        jobs = get_jobs_from_xml(os.path.join(settings.BASE_DIR, "data/job.230827.xml"), is_path_local=True)
+        self.assertEqual(len(jobs), 1372)
+
+    

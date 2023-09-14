@@ -234,6 +234,14 @@ def isResumeRequired(url, is_path_local=False):
         return False
 
 
+def get_latest_xml_file(folder_path):
+    xml_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f)) and f.endswith('.xml')]    
+    if not xml_files:
+        return None    
+    latest_xml_file = max(xml_files, key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))    
+    return os.path.join(folder_path, latest_xml_file)
+
+
 if __name__ == '__main__':
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     sys.path.append(BASE_DIR)
