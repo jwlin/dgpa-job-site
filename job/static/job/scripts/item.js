@@ -192,9 +192,11 @@ function getMessages(jobid, csrfmiddlewaretoken) {
 				m = '<hr>';
 				$.each(data['messages'], function(idx, val) {
 					m += '<p class="text-info" id="msg-' + val['id'] + '">' + val ['msg'] 
-						+ '<br><span style="color:grey;">' + val["time"] + '</span>&nbsp;&nbsp;'
-						+ '<a href="#" style="color:grey;" data-toggle="modal" data-target="#msgDelModal" data-whatever="' + jobid + '-' + val['id'] + '">刪除</a>'
-						+ '</p>';
+					   + '<br><span style="color:grey;">B' + val['order'] + ' · ' + val["time"] + '</span>&nbsp;&nbsp;';
+					if (val['msg'] != '(留言已刪除)') {
+						m += '<a href="#" style="color:grey;" data-toggle="modal" data-target="#msgDelModal" data-whatever="' + jobid + '-' + val['id'] + '">刪除</a>';
+					}
+					m += '</p>';
 				});
 			}
 			$("#message-get-" + jobid).fadeOut(100).fadeIn().html(m);

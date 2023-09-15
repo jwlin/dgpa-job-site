@@ -53,7 +53,7 @@ def index(request):
 
         messages = []
         curJobIds = CurrentJob.objects.all().values('job_id')
-        jmsgs = JobMessage.objects.all().filter(job__id__in=curJobIds).order_by('-last_modified')[:5]
+        jmsgs = JobMessage.objects.all().filter(job__id__in=curJobIds).exclude(message__startswith="[DELETED]").order_by('-last_modified')[:5]
         for jmsg in jmsgs:
             j = CurrentJob.objects.filter(job__id=jmsg.job.id)[0]
             jobname = j.org_name + ' / ' + j.title
@@ -190,19 +190,21 @@ def message(request, job_id):
         if request.POST.get('action') == 'get':
             msgdata = []
             try:
-                jmsgs = JobMessage.objects.filter(job__id=job_id).order_by('-last_modified')
-                for jmsg in jmsgs:
+                # jmsgs = JobMessage.objects.filter(job__id=job_id).order_by('-last_modified')
+                jmsgs = JobMessage.objects.filter(job__id=job_id).order_by('id')
+                for idx, jmsg in enumerate(jmsgs, start=1):
                     msgdata.append({
-                        'msg': jmsg.message,
+                        'msg': "(留言已刪除)" if jmsg.message.startswith("[DELETED]") else jmsg.message,
                         'time': (jmsg.last_modified + timedelta(hours=8)).strftime('%Y/%m/%d %H:%M'),  # Taipei's timezone
                         'id': jmsg.id,
+                        'order': idx
                     })
                 return HttpResponse(json.dumps({'succeeded': True, 'messages': msgdata}), content_type='application/json')
             except:
                 return HttpResponse(json.dumps({'succeeded': False}), content_type='application/json')
         elif request.POST.get('action') == 'add':
             pwd = request.POST.get('pwd')
-            comment = request.POST.get('comment')
+            comment = request.POST.get('comment').strip()
             if pwd and comment:
                 comment = comment[:200] if len(comment) > 200 else comment
                 comment = escape(comment)
@@ -210,6 +212,8 @@ def message(request, job_id):
                 pwd = make_password(pwd)
                 jmsg = JobMessage(job=Job.objects.get(id=job_id), message=comment, password=pwd)
                 jmsg.save()
+                return HttpResponse(json.dumps({'succeeded': True}), content_type='application/json')
+            elif not comment:
                 return HttpResponse(json.dumps({'succeeded': True}), content_type='application/json')
             else:
                 return HttpResponse(json.dumps({'succeeded': False}), content_type='application/json')            
@@ -220,7 +224,9 @@ def message(request, job_id):
             try:
                 jmsg = JobMessage.objects.get(id=msgid, job__id=job_id)
                 if check_password(pwd, jmsg.password):
-                    jmsg.delete()
+                    # jmsg.delete()
+                    jmsg.message = f"[DELETED] {jmsg.message}"
+                    jmsg.save()
                     return HttpResponse(json.dumps({'succeeded': True}), content_type='application/json')
                 else:
                     return HttpResponse(json.dumps({'succeeded': False}), content_type='application/json')
