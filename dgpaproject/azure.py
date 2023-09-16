@@ -2,10 +2,12 @@ from .settings import *
 import os
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
-ALLOWED_HOSTS += ["dgpajobs.net"]
 
 CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
-CSRF_TRUSTED_ORIGINS += ["https://dgpajobs.net"]
+
+if 'CUSTOM_DOMAIN' in os.environ:
+    ALLOWED_HOSTS += [os.environ['CUSTOM_DOMAIN']]
+    CSRF_TRUSTED_ORIGINS += ['https://' + os.environ['CUSTOM_DOMAIN']]
 
 DATABASES = {
     'default': {
