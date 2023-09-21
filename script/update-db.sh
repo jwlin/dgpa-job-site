@@ -2,6 +2,8 @@
 
 base_dir=
 
+echo "[$(date)] Script starts"
+
 echo "Unzip."
 cd ${base_dir}/data/daily
 zip_file=$(ls *.zip | head -n 1)
@@ -18,3 +20,5 @@ rm ${xml_file}
 
 echo "Move the zip file to archive."
 mv ${zip_file} ${base_dir}/data/archive/
+
+echo "[$(date)] Script ends"
