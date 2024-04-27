@@ -8,6 +8,7 @@ from django.core import serializers
 from django.utils.html import escape
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import HttpResponse
+from django.views import View
 from .models import *
 from . import my_utils
 import json
