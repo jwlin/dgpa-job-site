@@ -291,3 +291,7 @@ def trend_ajax(request):
                     return HttpResponse(json.dumps({'succeeded': False}), content_type='application/json')
             except Exception as e:
                 return HttpResponse(json.dumps({'succeeded': False}), content_type='application/json')
+
+class ads_view(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("google.com, pub-2164006457234199, DIRECT, f08c47fec0942fa0")

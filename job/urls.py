@@ -12,4 +12,5 @@ urlpatterns = [
     re_path(r'^api/message/(?P<job_id>[0-9]+)$', views.message, name='message'),
     re_path(r'^api/dept/$', views.dept_ajax, name='dept_ajax'),
     re_path(r'api/trend/$', views.trend_ajax, name='trend_ajax'),
+    re_path(r'^ads.txt', ads_view.as_view()),
 ]
