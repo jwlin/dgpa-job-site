@@ -17,10 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
+from django.http import HttpResponse
 
+def ads_txt(request):
+    with open('./ads.txt', 'r') as f:
+        file_content = f.read()
+    return HttpResponse(file_content, content_type="text/plain")
 
 urlpatterns = [
-    path("", include("job.urls"))
+    path("", include("job.urls")),
+    path('ads.txt', ads_txt, name='ads.txt')
 ]
 
 if settings.ADMIN_ENABLED:
