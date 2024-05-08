@@ -38,6 +38,9 @@ if latest_xml:
         if job['work_addr'] and len(job['work_addr']) > 2000:
             continue
 
+        if not job['person_kind']:
+            continue
+
         c_job = CurrentJob()
         c_job.title = job['title']
         c_job.sysnam = sysname
