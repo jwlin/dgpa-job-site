@@ -9,6 +9,8 @@ from django.utils.html import escape
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import HttpResponse
 from django.views import View
+from django.utils import timezone
+
 from .models import *
 from . import my_utils
 import json
@@ -211,8 +213,12 @@ def message(request, job_id):
                 comment = escape(comment)
                 pwd = pwd[:20] if len(pwd) > 20 else pwd
                 pwd = make_password(pwd)
-                jmsg = JobMessage(job=Job.objects.get(id=job_id), message=comment, password=pwd)
-                jmsg.save()
+                # sanity check: the same msg can only cross post three times in 7 days
+                existing_jmsgs = JobMessage.objects.filter(message=comment, 
+                                                  last_modified__gte=timezone.now()-timedelta(days=7))
+                if len(existing_jmsgs) < 3:
+                    jmsg = JobMessage(job=Job.objects.get(id=job_id), message=comment, password=pwd)
+                    jmsg.save()
                 return HttpResponse(json.dumps({'succeeded': True}), content_type='application/json')
             elif not comment:
                 return HttpResponse(json.dumps({'succeeded': True}), content_type='application/json')
