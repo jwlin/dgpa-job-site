@@ -10,7 +10,6 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import HttpResponse
 from django.views import View
 from django.utils import timezone
-from django.views import View
 
 from .models import *
 from . import my_utils
