@@ -67,13 +67,14 @@ $(function () { // document ready
 	detail += his_date.join("、");
 	detail += "</dd>";
 
-	detail += "<dt>留言</dt><dd><div id='message-post-" + jid + "'>"
-		+ "<form><div class='form-group'><textarea id='comment-" + jid 
-		+ "' maxlength='200' class='form-control' rows='2'></textarea></div>"
-		+ "<div class='form-group form-inline' style='text-align:right;'><span>密碼 (刪除留言時使用)</span>&nbsp;"
-		+ "<input type='password' maxlength='20' class='form-control' id='pwd-" + jid +"'>&nbsp;"
-		+ "<input type='submit' value='送出' autocomplete='off' data-loading-text='...' id='btn-comment-" + jid + "' class='btn btn-default btn-sm btn-comment'></div></form></div>";
-	detail += "<div id='message-get-" + jid + "'></div></dd>";
+	// 2024-11-03: remove commenting feature
+	// detail += "<dt>留言</dt><dd><div id='message-post-" + jid + "'>"
+	// 	+ "<form><div class='form-group'><textarea id='comment-" + jid 
+	// 	+ "' maxlength='200' class='form-control' rows='2'></textarea></div>"
+	// 	+ "<div class='form-group form-inline' style='text-align:right;'><span>密碼 (刪除留言時使用)</span>&nbsp;"
+	// 	+ "<input type='password' maxlength='20' class='form-control' id='pwd-" + jid +"'>&nbsp;"
+	// 	+ "<input type='submit' value='送出' autocomplete='off' data-loading-text='...' id='btn-comment-" + jid + "' class='btn btn-default btn-sm btn-comment'></div></form></div>";
+	// detail += "<div id='message-get-" + jid + "'></div></dd>";
 	detail += "</dl>";
 
 	// draw the panel
@@ -183,6 +184,9 @@ $(function () { // document ready
 
 
 function getMessages(jobid, csrfmiddlewaretoken) {
+	// 2024-11-03: remove commenting feature
+	return;
+	
 	var m = "";
 	var path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf( "/" ) + 1);
 	path = path + "api/message/" + jobid;

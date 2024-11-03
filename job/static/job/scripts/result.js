@@ -134,6 +134,9 @@ $(function () { // document ready
 
 
 function getMessages(jobid, csrfmiddlewaretoken) {
+	// 2024-11-03: remove commenting feature
+	return;
+
 	var m = "";
 	$.post(window.location.pathname + "api/message/" + jobid, {"csrfmiddlewaretoken": csrfmiddlewaretoken, "action": "get",}, function(data) {
 		if (data.succeeded) {
@@ -240,13 +243,14 @@ function display() {
 				detail += ")</dd>";
 			}
 
-			detail += "<dt>留言</dt><dd><div id='message-post-" + jobdata[i]["fields"]["job"] + "'>"
-				+ "<form><div class='form-group'><textarea id='comment-" + jobdata[i]["fields"]["job"] 
-				+ "' maxlength='200' class='form-control' rows='2'></textarea></div>"
-				+ "<div class='form-group form-inline' style='text-align:right;'><span>密碼 (刪除留言時使用)</span>&nbsp;"
-				+ "<input type='password' maxlength='20' class='form-control' id='pwd-" + jobdata[i]["fields"]["job"] +"'>&nbsp;"
-				+ "<input type='submit' value='送出' autocomplete='off' data-loading-text='...' id='btn-comment-" + jobdata[i]["fields"]["job"] + "' class='btn btn-default btn-sm btn-comment'></div></form></div>";
-			detail += "<div id='message-get-" + jobdata[i]["fields"]["job"] + "'></div></dd>";
+			// 2024-11-03: remove commenting feature
+			// detail += "<dt>留言</dt><dd><div id='message-post-" + jobdata[i]["fields"]["job"] + "'>"
+			// 	+ "<form><div class='form-group'><textarea id='comment-" + jobdata[i]["fields"]["job"] 
+			// 	+ "' maxlength='200' class='form-control' rows='2'></textarea></div>"
+			// 	+ "<div class='form-group form-inline' style='text-align:right;'><span>密碼 (刪除留言時使用)</span>&nbsp;"
+			// 	+ "<input type='password' maxlength='20' class='form-control' id='pwd-" + jobdata[i]["fields"]["job"] +"'>&nbsp;"
+			// 	+ "<input type='submit' value='送出' autocomplete='off' data-loading-text='...' id='btn-comment-" + jobdata[i]["fields"]["job"] + "' class='btn btn-default btn-sm btn-comment'></div></form></div>";
+			// detail += "<div id='message-get-" + jobdata[i]["fields"]["job"] + "'></div></dd>";
 			detail += "</dl>";
 																							
 			// draw the panel
